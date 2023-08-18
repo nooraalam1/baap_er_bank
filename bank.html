@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Dashboard</title>
+    <link href="https://cdn.jsdelivr.net/npm/daisyui@3.5.1/dist/full.css" rel="stylesheet" type="text/css" />
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body>
+    <h1 class="text-center text-5xl mt-10">Dashboard</h1> <br>
+    <hr class="border-lime-500">
+    <div class="mt-10">
+        <div class="flex gap-10 justify-center text-center text-4xl">
+            <div class="w-80 bg-lime-400 p-5 rounded-lg">Deposit <br>$<span id="depo">00</span></div>
+            <div class="w-80 bg-green-400 p-5 rounded-lg">Current Balance <br>$<span id="bal">500</span></div>
+            <div class="w-80 bg-teal-400 p-5 rounded-lg">Withdraw <br>$<span id="with">00</span></div>
+        </div>
+    </div>
+
+    <div class="flex gap-10 justify-center text-center  mt-10">
+        <div class="w-96 bg-red-500 p-5 text-white text-3xl rounded-lg">Deposit Amount <br>
+            <div class="py-2">
+                <input type="text" id="amountDepo" class="text-black text-sm p-2 rounded-md"
+                    placeholder="Enter Deposit Amount">
+                <br>
+            </div>
+            <div class="py-2">
+                <button class="btn btn-info text-xs px-8" id="btn-depo">Submit</button>
+            </div>
+
+        </div>
+        <div class="w-96 bg-pink-500 p-5 text-white text-3xl rounded-lg">Withdraw Amount <br>
+            <div class="py-2">
+                <input type="text" id="amountWith" class="text-black text-sm p-2 rounded-md"
+                    placeholder="Enter Withdraw Amount ">
+                <br>
+            </div>
+            <div class="py-2">
+                <button class="btn btn-info text-xs px-8" id="btn-with">Submit</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById('btn-depo').addEventListener('click', function () {
+
+
+
+            var z = parseFloat(document.getElementById('amountDepo').value);
+            if (isNaN(z)) {
+                alert("Enter Amount!");
+                return 0;
+            }
+
+            var zz = parseFloat(document.getElementById('depo').innerText);
+            var sum = (zz + z);
+
+            document.getElementById('depo').innerText = sum;
+
+            var Total = parseFloat(document.getElementById('bal').innerText);
+            var net = Total + z;
+
+            document.getElementById('bal').innerText = net;
+
+
+            //last
+            document.getElementById('amountDepo').value = '';
+
+
+        })
+        // withdraw
+
+        document.getElementById('btn-with').addEventListener('click', function () {
+            var wi = parseFloat(document.getElementById('amountWith').value);
+
+
+
+            if (isNaN(wi)) {
+                alert("Enter Amount!");
+                return 0;
+            }
+            var wi2 = parseFloat(document.getElementById('with').innerText);
+
+
+            var withD = (wi + wi2);
+
+
+            document.getElementById('with').innerText = withD;
+
+            var Wi3 = document.getElementById('bal').innerText;
+            var netAfterWi = (Wi3 - wi);
+            document.getElementById('bal').innerText = netAfterWi;
+
+            //last
+            document.getElementById('amountWith').value = '';
+
+
+        })
+
+    </script>
+</body>
+
+</html>
